@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل الموعد</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        green: { 700: '#1B5E20' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-100 p-5">
+
+    <button onclick="history.back()" class="text-green-700 text-xl mb-4">← رجوع</button>
+
+    <div class="bg-white shadow-lg rounded-xl p-6">
+        <h2 class="text-2xl font-bold text-green-700 mb-4">تفاصيل الموعد</h2>
+
+        <p id="type" class="text-lg font-bold text-gray-800"></p>
+        <p id="date" class="text-gray-600 mt-2"></p>
+        <p id="location" class="text-gray-600 mt-2"></p>
+
+        <button id="deleteBtn"
+            class="mt-6 w-full bg-red-600 text-white py-3 rounded-lg font-bold hover:bg-red-700 transition">
+            حذف الموعد 🗑️
+        </button>
+    </div>
+
+    <script src="/js/appointment-details.js"></script>
+
+</body>
+</html>

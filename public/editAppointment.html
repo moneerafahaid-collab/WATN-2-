@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تعديل الموعد</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- HEADER -->
+    <header class="bg-blue-700 text-white p-4 text-center text-2xl font-bold shadow">
+        تعديل الموعد
+    </header>
+
+    <div class="max-w-lg mx-auto mt-8 bg-white p-6 rounded-xl shadow">
+
+        <!-- نوع الخدمة -->
+        <label class="block font-bold mb-2 text-gray-700">نوع الخدمة:</label>
+        <select id="appointmentType" class="w-full p-3 border rounded-lg mb-4">
+            <option value="تجديد رخصة القيادة">🚗 تجديد رخصة القيادة</option>
+            <option value="تجديد الهوية الوطنية">🆔 تجديد الهوية الوطنية</option>
+            <option value="الخدمات التعليمية">📚 الخدمات التعليمية</option>
+            <option value="الخدمات الصحية">🏥 الخدمات الصحية</option>
+        </select>
+
+        <!-- التاريخ -->
+        <label class="block font-bold mb-2 text-gray-700">تاريخ الموعد:</label>
+        <input type="date" id="date" class="w-full p-3 border rounded-lg mb-4">
+
+        <!-- الوقت -->
+        <label class="block font-bold mb-2 text-gray-700">الوقت:</label>
+        <input type="time" id="time" class="w-full p-3 border rounded-lg mb-4">
+
+        <!-- زر التعديل -->
+        <button onclick="saveAppointment()"
+            class="w-full bg-blue-600 text-white p-3 rounded-lg text-lg hover:bg-blue-700 transition">
+            حفظ التعديلات
+        </button>
+
+        <p id="result" class="mt-4 text-center font-bold"></p>
+
+        <!-- رجوع -->
+        <a href="index.html" class="block text-center mt-6 text-blue-700 underline text-lg">
+            الرجوع للصفحة الرئيسية
+        </a>
+    </div>
+
+    <script src="/js/editAppointment.js"></script>
+
+</body>
+
+</html>

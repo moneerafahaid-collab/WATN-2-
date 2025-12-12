@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تسجيل الدخول</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body { font-family: 'Tajawal', sans-serif; }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-md text-center">
+
+            <!-- أيقونة -->
+            <div class="text-green-600 text-6xl mb-4">🔒</div>
+
+            <h1 class="text-2xl font-bold mb-6 text-gray-700">تسجيل الدخول</h1>
+
+            <!-- اسم المستخدم -->
+            <input 
+                id="username"
+                type="text" 
+                placeholder="اسم المستخدم"
+                class="w-full p-3 mb-4 border rounded-lg focus:border-green-600 focus:outline-none"
+            />
+
+            <!-- كلمة المرور -->
+            <input 
+                id="password"
+                type="password" 
+                placeholder="كلمة المرور"
+                class="w-full p-3 mb-4 border rounded-lg focus:border-green-600 focus:outline-none"
+            />
+
+            <!-- زر الدخول -->
+            <button 
+                onclick="login()"
+                class="w-full bg-green-600 text-white p-3 rounded-lg text-lg hover:bg-green-700 transition"
+            >
+                دخول
+            </button>
+
+            <!-- رسالة نتيجة -->
+            <p id="result" class="text-red-600 font-bold mt-4"></p>
+        </div>
+    </div>
+
+    <script>
+        async function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            if (!username || !password) {
+                document.getElementById("result").textContent = "⚠️ يرجى إدخال اسم المستخدم وكلمة المرور";
+                return;
+            }
+
+            try {
+                const res = await fetch("/api/auth/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await res.json();
+
+                if (data.token) {
+                    // حفظ التوكن في المتصفح
+                    localStorage.setItem("token", data.token);
+
+                    document.getElementById("result").textContent = "✅ تم تسجيل الدخول";
+
+                    // توجيه للصفحة الرئيسية
+                    setTimeout(() => {
+                        window.location.href = "index.html";
+                    }, 800);
+                } else {
+                    document.getElementById("result").textContent = "❌ اسم المستخدم أو كلمة المرور غير صحيحة";
+                }
+
+            } catch (err) {
+                document.getElementById("result").textContent = "❌ خطأ في الاتصال بالسيرفر";
+            }
+        }
+    </script>
+
+</body>
+</html>

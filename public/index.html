@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المنصة الوطنية</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#1B5E20">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        green: { 700: '#1B5E20' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Fonts -->
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+<!-- THEME AND NAVBAR JS -->
+<script src="/js/theme.js"></script>
+<script src="/js/navbar.js"></script>
+
+<!-- Service Worker (PWA) -->
+<script>
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/service-worker.js");
+}
+</script>
+
+
+<!-- ================= HEADER ================= -->
+<header class="bg-green-700 text-white p-4 text-center text-3xl font-bold shadow-lg">
+    المنصة الوطنية
+</header>
+
+<!-- ================= STATS BAR ================= -->
+<div class="grid grid-cols-3 text-center text-green-700 font-bold mt-4">
+    <div class="p-4 bg-white shadow-md rounded-lg mx-2">3<br>تنبيهات</div>
+    <div class="p-4 bg-white shadow-md rounded-lg mx-2">5<br>مواعيد</div>
+    <div class="p-4 bg-white shadow-md rounded-lg mx-2">12<br>خدمة</div>
+</div>
+
+<!-- ================= WELCOME MESSAGE ================= -->
+<div class="mt-6 bg-white mx-4 p-5 rounded-xl shadow">
+    <h2 class="text-2xl text-green-700 font-bold mb-1">مرحباً بك</h2>
+    <p class="text-gray-600">اختر الخدمة التي تحتاجها</p>
+</div>
+
+<!-- ================= UPCOMING APPOINTMENTS ================= -->
+<div class="mt-6 bg-white mx-4 p-5 rounded-xl shadow">
+    <div class="flex justify-between items-center mb-3">
+        <h3 class="text-xl font-bold text-green-700">المواعيد القادمة</h3>
+        <span class="text-2xl">📅</span>
+    </div>
+
+    <div id="appointmentsContainer" class="text-gray-600">
+        <p>لا توجد مواعيد قادمة. يمكنك حجز موعد جديد عبر الخدمات المتاحة أدناه.</p>
+    </div>
+</div>
+
+<!-- ================= SERVICES TITLE ================= -->
+<div class="text-center mt-10">
+    <h2 class="text-2xl text-green-700 font-bold">الخدمات المتاحة</h2>
+    <p class="text-gray-600">اختر الخدمة لعرض المواعيد</p>
+</div>
+
+<!-- ================= SERVICES GRID ================= -->
+<div class="grid grid-cols-2 gap-4 p-4">
+
+    <div class="bg-white rounded-xl shadow p-5 text-center hover:shadow-lg cursor-pointer">
+        <div class="text-4xl mb-2">🚗</div>
+        <h3 class="text-lg font-bold">تجديد رخصة القيادة</h3>
+        <p class="text-green-600 mt-1">24 ساعة</p>
+    </div>
+
+    <div class="bg-white rounded-xl shadow p-5 text-center hover:shadow-lg cursor-pointer">
+        <div class="text-4xl mb-2">🆔</div>
+        <h3 class="text-lg font-bold">تجديد الهوية الوطنية</h3>
+        <p class="text-green-600 mt-1">5-7 أيام</p>
+    </div>
+
+    <div class="bg-white rounded-xl shadow p-5 text-center hover:shadow-lg cursor-pointer">
+        <div class="text-4xl mb-2">📚</div>
+        <h3 class="text-lg font-bold">الخدمات التعليمية</h3>
+        <p class="text-green-600 mt-1">1-2 يوم</p>
+    </div>
+
+    <div class="bg-white rounded-xl shadow p-5 text-center hover:shadow-lg cursor-pointer">
+        <div class="text-4xl mb-2">🏥</div>
+        <h3 class="text-lg font-bold">الخدمات الصحية</h3>
+        <p class="text-green-600 mt-1">فوري</p>
+    </div>
+
+</div>
+
+<!-- ================= JS ================= -->
+<script src="/js/appointment.js"></script>
+
+</body>
+</html>
